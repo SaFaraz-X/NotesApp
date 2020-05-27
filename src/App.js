@@ -23,7 +23,7 @@ class App extends Component {
       }
     };
     this.inputText = this.inputText.bind(this);
-    this.inputText = this.inputTitle.bind(this);
+    this.inputTitle = this.inputTitle.bind(this);
     this.addNote = this.addNote.bind(this);
   }
 
@@ -46,7 +46,7 @@ class App extends Component {
   }
 
   addNote = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const newNote = this.state.currentNote;
     console.log(newNote);
     if(newNote.text !== "" && newNote.title != ""){
@@ -95,7 +95,7 @@ clearNote = () => {
           {/* Using the HTML tag 'textarea' to create the notes component */ }
           {/* Using 'onChange' because we input text and want the value to change as the text changes */ }
           {/* <textarea id="noteArea" value={this.state.currentNote.text}  onChange={e=>this.getNotes(e)}> */}
-          <textarea id="noteArea" value={this.state.currentNote.text} >
+          <textarea id="noteArea" value={this.state.currentNote.text}  onChange={e=>this.inputText(e)}>
           </textarea>
 
           {/* Create note, uses 'onClick' function to call the 'saveNote' function */ }
@@ -111,11 +111,11 @@ clearNote = () => {
           </button>
         </header >
 
-        {/* <Notes
-        items = {this.state.items}
+        <Notes
+        notes = {this.state.notes}
           // title={this.state.titleList}
           // note={this.state.noteList}
-        />  */}
+        /> 
 
       </div>
     );
@@ -123,47 +123,3 @@ clearNote = () => {
 }
 
 export default App;
-
-// getNotes = (e) => {
-//   // let newNote = e.target.value; // Assigns the value of the 'e' parameter to 'newNote'
-//   this.setState({
-//     currentNote: {
-//       note: e.target.value
-//     }
-//   });
-// };
-
-// getTitle = (e) => {
-//   // let newTitle = e.target.value; // Assigns the value of the 'e' parameter to 'newTitle'
-//   this.setState({
-//     currentNote: {
-//       title: e.target.value
-//     }
-//   });
-// };
-
-// addNote = (e) => {
-//   e.preventDefault();
-//   const newItem = this.state.currentNote;
-//   console.log(newItem);
-//   if(newItem.title !== "" && newItem.note !== ""){
-//     const items = [...this.state.items, newItem]
-//     this.setState({
-//       items : newItem,
-//       currentNote:{
-//         title:"",
-//         note: ""
-//       }
-//     })
-//   }
-// }
-
-// saveNote = () => {
-//   if(this.state.title !== "" && this.state.note !== ""){
-//     this.setState({ 
-//       titleList: [this.state.titleList, this.state.title],
-//       noteList: [this.state.noteList, this.state.note] 
-//     });
-//     // this.setState({ noteList: [this.state.noteList, this.state.note] })
-//   } 
-// };
