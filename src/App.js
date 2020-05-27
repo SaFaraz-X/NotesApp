@@ -25,6 +25,8 @@ class App extends Component {
     this.inputText = this.inputText.bind(this);
     this.inputTitle = this.inputTitle.bind(this);
     this.addNote = this.addNote.bind(this);
+    this.deleteNote = this.deleteNote.bind(this);
+
   }
 
   inputTitle = (e) => {
@@ -61,6 +63,13 @@ class App extends Component {
       })
     } 
 
+  }
+
+  deleteNote = (key) => {
+    const filteredNotes = this.state.notes.filter(note => note.key !== key);
+    this.setState({
+      notes: filteredNotes
+    })
   }
 
 clearNote = () => {
@@ -115,6 +124,7 @@ clearNote = () => {
         notes = {this.state.notes}
           // title={this.state.titleList}
           // note={this.state.noteList}
+        deleteNote = {this.deleteNote}
         /> 
 
       </div>
